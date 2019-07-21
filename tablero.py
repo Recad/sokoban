@@ -5,11 +5,6 @@ from punto import Puntos
 
 class Tablero(object):
 
-    '''
-    Board's overloaded functions and functions for
-    board manipulation live here
-    '''
-
     def __init__(self):
         #self.dir_list = dir_list  # aun no esta claro
         self.tablero = set()
@@ -84,6 +79,24 @@ class Tablero(object):
 
         self.agente = agenteNew
         #aqui se puede guardar la direccionself.dir_list.append(direccion)
+
+
+    def validarWin(self):
+
+        validadorLogico = True
+
+        for i in self.cajas:
+
+            if i in self.metas:
+
+                validadorLogico = (validadorLogico and True)
+
+            else:
+                validadorLogico = False
+
+        return validadorLogico
+
+
 
 x=Tablero()
 x.cargarTablero("nivel4.txt")
