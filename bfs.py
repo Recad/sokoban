@@ -26,34 +26,36 @@ class Amplitud(object):
         explorado = set()
 
 
-
+        condicion = True
 
         ##DEBO PONER EL CICLO DE EXPLORACIÓN PRINCIPAL
 
+        while condicion: #no encuentro la condicion
+
+            ##primero debo validar que hijos puede tener debo crear una función
 
 
-        ##primero debo validar que hijos puede tener debo crear una función
+            ##Aqui expando los hijos pero debo vali
+            nodoActual = colaPrincipal.pop(0)
+
+            hijos = nodoActual.moviValidos() #Aqui los hijos que estoy expandiendo
 
 
-        ##Aqui expando los hijos pero debo vali
-        nodoActual = colaPrincipal.pop(0)
-
-        hijos = nodoActual.moviValidos() #Aqui los hijos que estoy expandiendo
-
-
-        explorado.add(nodoActual)
-        for j in hijos:
-            hijoactual = deepcopy(nodoActual) #Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
-            nodes_generated += 1
-            hijoactual.move(j)
-            if hijoactual not in explorado:
-                if hijoactual.is_win():
-                    #   Que hacer si gana
-
-                    return hijoactual
-                colaPrincipal.push(hijoactual)
-            else:
-                #nodes_repeated += 1 nodos que se repiten
+            explorado.add(nodoActual)
+            for j in hijos:
+                hijoactual = deepcopy(nodoActual) #Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
+                nodes_generated += 1
+                hijoactual.move(j)
+                if hijoactual not in explorado:
+                    if hijoactual.validarWin():
+                        #   Que hacer si gana
+                        print("GANASTE PUTOOO")
+                        condicion=False
+                        return hijoactual
+                        break
+                    colaPrincipal.push(hijoactual)
+                else:
+                    #nodes_repeated += 1 nodos que se repiten
 
 
         
