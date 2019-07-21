@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
-import random, math
+
+from tablero import Tablero
 
 
 class Amplitud(object):
@@ -15,7 +16,11 @@ class Amplitud(object):
 
 
 
-    def CambiarEstado(self, nuevoEstado):
-        self.__estado=nuevoEstado #nada
+    def buscar(self, Tablero):
+
+
+        
+
+
 
 
