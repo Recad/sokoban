@@ -5,10 +5,8 @@ import os
 tablero_sp = {}
 tablero_cp = {}
 def leerTablero():
-	ruta = os.getcwd()
-	ruta = ruta + "/nivel4.txt"
+	ruta = os.getcwd() + "/nivel4.txt"
 	contador = -1
-	contador2 = -1
 	g = open(ruta , "r")
 	for linea in g.readlines():
 		contador = contador + 1
