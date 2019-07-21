@@ -12,15 +12,15 @@ class Tablero(object):
         self.posiciones= set()
         self.metas = set()
         self.cajas = set()
-        self.agente = ""
+        self.agente = None
         #self.cost = 1  # no se usa
 
     def cajasObjeto(self, posicion):
             if posicion != '':
-                self.cajas.add(Puntos(posicion[0], posicion[2]))
+                self.cajas.add(Puntos(int(posicion[0]),int(posicion[2])))
 
-    def agenteObjeto(self):
-        self.agente = Puntos(self.agente[0], self.agente[2])
+    def agenteObjeto(self,agenteTexto):
+        self.agente = Puntos(int(agenteTexto[0]),int(agenteTexto[2]))
 
 
     def cargarTablero(self, archivo):
@@ -31,6 +31,7 @@ class Tablero(object):
         fila = 0
         contador = 0
         coordenada = ""
+        agenteTexto= ""
         for linea in g.readlines():
             columna = 0
             fila = fila + 1
@@ -47,11 +48,16 @@ class Tablero(object):
                     else:
                         contador = contador + 1
                         if contador <= 3:
-                            self.agente = self.agente + letra
+                            agenteTexto = agenteTexto + letra
                         else:
                             posic = posic + letra
             self.cajasObjeto(posic)
-        self.agenteObjeto()
+        self.agenteObjeto(agenteTexto)
+
+        print(self.agente)
+        print(self.cajas)
+
+
 
     def moviValidos(self):
 
@@ -66,6 +72,13 @@ class Tablero(object):
                         movimientos.append(i)
                 else:
                     movimientos.append(i)
+
+        print("Los movimientos validos para:" + str(self.agente))
+
+
+        for j in movimientos:
+            print(str(j))
+
         return movimientos
 
     def mover(self, direccion):#direccion es un objeto de la clase puntos
@@ -80,6 +93,17 @@ class Tablero(object):
         self.agente = agenteNew
         #aqui se puede guardar la direccionself.dir_list.append(direccion)
 
+    def printestadoimport(self):
+        print("las cajas estan en :")
+        for i in self.cajas:
+
+            print(i)
+        print("las metas son :")
+        for j in self.metas:
+            print(j)
+
+        print("el agente esta en :"+str(self.agente))
+
 
     def validarWin(self):
 
@@ -89,6 +113,8 @@ class Tablero(object):
 
             if i in self.metas:
 
+                print("el valor de i es :"+i)
+
                 validadorLogico = (validadorLogico and True)
 
             else:
@@ -97,13 +123,13 @@ class Tablero(object):
         return validadorLogico
 
 
-
+'''
 x=Tablero()
 x.cargarTablero("nivel4.txt")
 print(x.posiciones)
 print(x.cajas)
 
-
+'''
 
 
 
