@@ -24,8 +24,7 @@ class Tablero(object):
         self.posiciones= set()
         self.metas = set()
         self.cajas = set()
-        self.jugador = ""
-        self.agente = None
+        self.agente = ""
         #self.cost = 1  # no se usa
 
 
@@ -53,7 +52,7 @@ class Tablero(object):
                     else:
                         contador = contador + 1
                         if contador <= 3:
-                            self.jugador = self.jugador + letra
+                            self.agente = self.agente + letra
                         else:
                             posic = posic + letra
             self.cajas.add(posic)
