@@ -1,14 +1,7 @@
 import string
 import os
-from spot import Spot
-from direction import Direction
+from punto import Puntos
 
-'''tener en consideración esto'''
-'''L = Direction(Spot(-1, 0), 'l')
-R = Direction(Spot(1, 0), 'r')
-U = Direction(Spot(0, -1), 'u')
-D = Direction(Spot(0, 1), 'd')
-directions = [U, D, L, R]'''
 
 class Tablero(object):
 
@@ -44,21 +37,32 @@ class Tablero(object):
                 columna = columna + 1
                 if letra != '\n':
                     if letra == "0":
-                        self.posiciones.add( str(fila) + "," + str(columna))
+                        self.posiciones.add(Puntos(fila,columna))
                     elif letra == "W":
-                        self.muros.add( str(fila) + "," + str(columna))
+                        self.muros.add(Puntos(fila,columna))
                     elif letra == "X":
-                        self.metas.add( str(fila) + "," + str(columna))
+                        self.metas.add(Puntos(fila,columna))
                     else:
                         contador = contador + 1
                         if contador <= 3:
                             self.agente = self.agente + letra
                         else:
                             posic = posic + letra
-            self.cajas.add(posic)
+            cajasObjeto(self,posic)
+        agenteObjeto(self)
+
+def cajasObjeto(self,posicion):
+    if posicion != '':
+        self.cajas.add(Puntos(posicion[0],posicion[2]))
+
+def agenteObjeto(self):
+    self.agente = Puntos(self.agente[0], self.agente[2])
 
 
-
+x=Tablero()
+x.cargarTablero("nivel4.txt")
+print(x.posiciones)
+print(x.cajas)
 
 
 
