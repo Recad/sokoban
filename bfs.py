@@ -19,24 +19,22 @@ class Amplitud(object):
     def buscar(self, Tablero):
 
         nodocopia = deepcopy(Tablero)
-
+        estadoinicial = deepcopy(Tablero)
         #Aqui se mete el primer elemento de la cola, recordar que en bfs se añaden los hijos al final
         colaPrincipal = []
         colaPrincipal.insert(0, nodocopia)
         explorado = set()
-
+        #profundidad = 0
 
         condicion = True
 
         ##DEBO PONER EL CICLO DE EXPLORACIÓN PRINCIPAL
 
-        while condicion: #no encuentro la condicion
-
-
-
-
-
-
+        while condicion : #no encuentro la condicion
+            #profundidad += 1
+            if len(colaPrincipal)== 0:
+                print("no se pudo encontrar una solucion")
+                break
             ##primero debo validar que hijos puede tener debo crear una función
 
 
@@ -59,8 +57,8 @@ class Amplitud(object):
                 hijoactual = deepcopy(nodoEvaluar) #Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
                 hijoactual.mover(j)
 
-
-                if hijoactual not in explorado:
+                #and hijoactual != estadoinicial
+                if hijoactual not in explorado :
 
                     if hijoactual.validarWin():
                         #   Que hacer si gana
@@ -70,12 +68,10 @@ class Amplitud(object):
                         hijoactual.printResult()
                         #return hijoactual
 
-
-
                     valueins = len(colaPrincipal) - 1
                     colaPrincipal.insert(valueins, hijoactual)
-                else:
-                    print("Fail")
+
+
 
 
         

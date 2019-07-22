@@ -67,7 +67,8 @@ class Tablero(object):
                 if self.agente + i in self.cajas:
                     # y si hay una caja o un muro detras de el?
                     if self.agente + i.double() not in self.cajas.union(self.muros):
-                        movimientos.append(i)
+                        if self.agente + i not in self.metas:
+                            movimientos.append(i)
                 else:
                     movimientos.append(i)
         return movimientos
@@ -79,13 +80,13 @@ class Tablero(object):
 
         if agenteNew in self.cajas:
             #print("----------------------------------------------")
-            print ("el agente que esta en "+ str(self.agente))
-            print("se mueve la caja de "+ str(agenteNew))
+            #print ("el agente que esta en "+ str(self.agente))
+            #print("se mueve la caja de "+ str(agenteNew))
 
             self.cajas.remove(agenteNew)
             self.cajas.add(agenteNew + direccion)
 
-            print("se movio caja a " + str(agenteNew + direccion))
+            #print("se movio caja a " + str(agenteNew + direccion))
             #aqui se podria evaluar el costo
 
         self.agente = agenteNew
@@ -147,6 +148,16 @@ class Tablero(object):
             return True
         else:
             return False
+
+    def __eq__(self, other):
+        if self.agente == other.agente and self.cajas.issubset(other.cajas):
+            return True
+        else:
+            return False
+
+    def __hash__(self):
+        ''' hashes by frozenset of box positions '''
+        return hash((frozenset(self.cajas), self.agente))
 
 
 '''

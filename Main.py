@@ -12,6 +12,7 @@ import sys
 def main():
 
 	file_name = sys.argv[1]
+	algoritmo = int(sys.argv[2])
 	newtablero = Tablero()
 	amplitud = Amplitud(newtablero)
 
@@ -20,22 +21,18 @@ def main():
 	iterativa = ProfundidadI(newtablero)
 
 	newtablero.cargarTablero(file_name)
-	#amplitud.buscar(newtablero)
-	#profundidad.buscar(newtablero)
-	iterativa.buscar(newtablero)
-	print(file_name)
 
+	if algoritmo == 1:
+		amplitud.buscar(newtablero)
 
+	elif algoritmo == 2:
+		profundidad.buscar(newtablero)
 
+	elif algoritmo == 3:
+		iterativa.buscar(newtablero)
 
-
-
-
-
-
-
-
-
+	else:
+		print("No se definio algoritmo")
 
 
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ class Profundidad(object):
         colaPrincipal = []
         colaPrincipal.insert(0, node)
         explorado = set()
-
+        iteracion=0
         nodosExplorados = []
         condicion = True
 
@@ -65,8 +65,3 @@ class Profundidad(object):
 
                     ##valueins = len(colaPrincipal) - 1
                     colaPrincipal.insert(0, hijoactual)
-
-
-
-
-

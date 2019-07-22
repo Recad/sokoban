@@ -10,7 +10,7 @@ class ProfundidadI(object):
     def __init__(self, tablero):
 
         self.primerTablero = tablero
-
+        self.explorado = set()
 
 
     def buscar(self, Tablero):
@@ -20,12 +20,15 @@ class ProfundidadI(object):
         colaprincipal = []
         condicion = True
 
+
         #reperti hasta alcanzar profundidad
         while condicion:
 
             resultato = self.auxrecursiva(Tablero,profundidad)
 
             if resultato is not None:
+
+                resultato.printestadoimport()
                 if resultato.validarWin():
                     resultato.printResult()#ganoooooooo
                     break
@@ -47,15 +50,16 @@ class ProfundidadI(object):
             if nodo is not None:
 
                 movimientoshijos=nodo.moviValidos()
-
+                self.explorado.add(nodo)
                 for i in movimientoshijos:
 
                     nodoauxiliar=deepcopy(nodo)
                     movimiento=nodoauxiliar.mover(i)
-                    resultado= self.auxrecursiva(movimiento,profundidad-1)
+                    if movimiento not in self.explorado:
+                        resultado= self.auxrecursiva(movimiento,profundidad-1)
 
-                    if resultado is not None:
-                        return resultado
+                        if resultado is not None:
+                            return resultado
 
 
         else:
