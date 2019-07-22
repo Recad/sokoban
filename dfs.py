@@ -53,14 +53,13 @@ class Profundidad(object):
 
                 hijoactual.mover(j)
 
+                print(str(hijoactual.agente.getX)+', '+str(hijoactual.agente.getY))
 
-
-                if hijoactual not in explorado:
+                if hijoactual not in explorado :
 
                 	#if hijoactual.validarCaminoRecorrido(j):
                 	#	break
 
-                    
                     if hijoactual.validarWin():
                         #   Que hacer si gana
                         condicion=False

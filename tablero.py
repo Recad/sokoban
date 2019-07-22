@@ -79,13 +79,13 @@ class Tablero(object):
 
         if agenteNew in self.cajas:
             #print("----------------------------------------------")
-            #print ("el agente que esta en "+ str(self.agente))
-            #print("se mueve la caja de "+ str(agenteNew))
+            print ("el agente que esta en "+ str(self.agente))
+            print("se mueve la caja de "+ str(agenteNew))
 
             self.cajas.remove(agenteNew)
             self.cajas.add(agenteNew + direccion)
 
-            #print("se movio caja a " + str(agenteNew + direccion))
+            print("se movio caja a " + str(agenteNew + direccion))
             #aqui se podria evaluar el costo
 
         self.agente = agenteNew
