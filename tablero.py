@@ -142,6 +142,13 @@ class Tablero(object):
         return validadorLogico
 
 
+    def validarCaminoRecorrido(self, pos):
+        if pos in self.resultado:
+            return True
+        else:
+            return False
+
+
 '''
 x=Tablero()
 x.cargarTablero("nivel4.txt")

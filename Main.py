@@ -17,8 +17,8 @@ def main():
 	profundidad = Profundidad(newtablero)
 
 	newtablero.cargarTablero(file_name)
-	amplitud.buscar(newtablero)
-	#profundidad.buscar(newtablero)
+	#amplitud.buscar(newtablero)
+	profundidad.buscar(newtablero)
 	print(file_name)
 
 
