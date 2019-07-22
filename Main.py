@@ -3,6 +3,7 @@ from asyncore import file_dispatcher
 
 from tablero import Tablero
 from bfs import Amplitud
+from dfs import Profundidad
 import bfs
 import re
 import sys
@@ -13,9 +14,11 @@ def main():
 	newtablero = Tablero()
 	amplitud = Amplitud(newtablero)
 
+	profundidad = Profundidad(newtablero)
 
 	newtablero.cargarTablero(file_name)
 	amplitud.buscar(newtablero)
+	#profundidad.buscar(newtablero)
 	print(file_name)
 
 

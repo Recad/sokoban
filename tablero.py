@@ -6,14 +6,14 @@ from punto import Puntos
 class Tablero(object):
 
     def __init__(self):
-        #self.dir_list = dir_list  # aun no esta claro
-        self.tablero = set()
+        self.agente = None
         self.muros = set()
-        self.posiciones= set()
+        self.tablero = set()
         self.metas = set()
         self.cajas = set()
-        self.agente = None
-        #self.cost = 1  # no se usa
+        self.posiciones = set()
+        self.resultado = []
+
 
     def cajasObjeto(self, posicion):
             if posicion != '':
@@ -54,8 +54,6 @@ class Tablero(object):
             self.cajasObjeto(posic)
         self.agenteObjeto(agenteTexto)
 
-        print(self.agente)
-        print(self.cajas)
 
 
 
@@ -72,26 +70,44 @@ class Tablero(object):
                         movimientos.append(i)
                 else:
                     movimientos.append(i)
-
-        print("Los movimientos validos para:" + str(self.agente))
-
-
-        for j in movimientos:
-            print(str(j))
-
         return movimientos
 
     def mover(self, direccion):#direccion es un objeto de la clase puntos
         ''' mueve al jugador y al jugador y la caja si hay caja '''
         agenteNew = self.agente + direccion
+
+
         if agenteNew in self.cajas:
+            #print("----------------------------------------------")
+            #print ("el agente que esta en "+ str(self.agente))
+            #print("se mueve la caja de "+ str(agenteNew))
+
             self.cajas.remove(agenteNew)
             self.cajas.add(agenteNew + direccion)
 
+            #print("se movio caja a " + str(agenteNew + direccion))
             #aqui se podria evaluar el costo
 
         self.agente = agenteNew
-        #aqui se puede guardar la direccionself.dir_list.append(direccion)
+
+        self.resultado.append(direccion)
+
+
+    def printResult(self):
+
+        for i in self.resultado:
+            #print(i)
+
+            if i.getX() == -1 and i.getY()== 0:
+                print("U")
+            elif i.getX() == 1 and i.getY()== 0:
+                print("D")
+            elif i.getX() == 0 and i.getY()== -1:
+                print("L")
+            elif i.getX() == 0 and i.getY()== 1:
+                print("R")
+
+
 
     def printestadoimport(self):
         print("las cajas estan en :")
@@ -105,6 +121,11 @@ class Tablero(object):
         print("el agente esta en :"+str(self.agente))
 
 
+        print("los obtaculos son:")
+        for k in self.muros:
+            print(k)
+
+
     def validarWin(self):
 
         validadorLogico = True
@@ -112,8 +133,6 @@ class Tablero(object):
         for i in self.cajas:
 
             if i in self.metas:
-
-                print("el valor de i es :"+i)
 
                 validadorLogico = (validadorLogico and True)
 
