@@ -4,6 +4,7 @@ from asyncore import file_dispatcher
 from tablero import Tablero
 from bfs import Amplitud
 from dfs import Profundidad
+from idfs import ProfundidadI
 import bfs
 import re
 import sys
@@ -16,9 +17,12 @@ def main():
 
 	profundidad = Profundidad(newtablero)
 
+	iterativa = ProfundidadI(newtablero)
+
 	newtablero.cargarTablero(file_name)
 	#amplitud.buscar(newtablero)
-	profundidad.buscar(newtablero)
+	#profundidad.buscar(newtablero)
+	iterativa.buscar(newtablero)
 	print(file_name)
 
 

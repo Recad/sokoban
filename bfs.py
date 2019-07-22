@@ -18,11 +18,11 @@ class Amplitud(object):
 
     def buscar(self, Tablero):
 
-        node = deepcopy(Tablero)
-        nodes_generated = 0
+        nodocopia = deepcopy(Tablero)
+
         #Aqui se mete el primer elemento de la cola, recordar que en bfs se añaden los hijos al final
         colaPrincipal = []
-        colaPrincipal.insert(0, node)
+        colaPrincipal.insert(0, nodocopia)
         explorado = set()
 
 
@@ -56,10 +56,7 @@ class Amplitud(object):
             for j in posicioneshijos:
                 '''A cada hijo debo avaluarlo y enviarlo al final de la cola'''
 
-
                 hijoactual = deepcopy(nodoEvaluar) #Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
-                nodes_generated += 1
-
                 hijoactual.mover(j)
 
 
@@ -78,8 +75,7 @@ class Amplitud(object):
                     valueins = len(colaPrincipal) - 1
                     colaPrincipal.insert(valueins, hijoactual)
                 else:
-                    #nodes_repeated += 1 nodos que se repiten
-                    print("No se que decir")
+                    print("Fail")
 
 
         
