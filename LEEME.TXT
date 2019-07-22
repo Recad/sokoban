@@ -1,0 +1,27 @@
+los integrantes son:
+
+David andres ramirez 1430933
+Erik López Pacheco 1430406
+Juan Carlos Viteri 1427543
+
+
+Este programa requiere python 3 para ser ejecutado.
+
+para ejecutar usar script bash asi: (Recuerde brindar permisos de ejecución)
+
+./run.sh "Archivo" "Algoritmo"
+
+donde "Archivo" es el tablero y "Algoritmo" el algoritmo a usar.
+
+1-Busqueda en amplitud
+2-Busqueda en profundidad
+3-Busqueda en profundidad iterativa
+
+EJEMPLO:
+ ./run.sh nivel1.txt 1
+ 
+ Lo anterior ejecuta el primer nivel utilizando busqueda en amplitud.
+ 
+ 
+
+

@@ -4,7 +4,7 @@ from asyncore import file_dispatcher
 from tablero import Tablero
 from bfs import Amplitud
 from dfs import Profundidad
-from idfs import ProfundidadI
+from iidfs import ProfundidadI
 import bfs
 import re
 import sys

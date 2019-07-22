@@ -1,67 +1,100 @@
 #! /usr/bin/env python3
 from copy import deepcopy
-import heapq
 
 from tablero import Tablero
 
 
-class Profundidad(object):
+class ProfundidadI(object):
+    '''Clase de la busqueda por profundidad iterativa'''
+
+    def __init__(self, tablero):
+
+        self.primerTablero = tablero
+        self.explorado = set()
 
 
-    def __init__(self,tablero):
-
-       self.primerTablero = tablero
+    def buscar(self, Tablero):
 
 
+        profundidad = 1
+        colaprincipal = []
+        condicion = True
+        resultadonivel = set()
+
+        #reperti hasta alcanzar profundidad
+        while condicion:
+
+            resultadonivel = self.auxiter(Tablero,profundidad)
+
+            for i in resultadonivel:
+
+                if i.validarWin():
+                    i.printResult()
+                    condicion = False
+                    break
 
 
-    def buscar(self,Tablero):
-        node = deepcopy(Tablero)
+
+            profundidad +=1
+
+
+    def auxiter(self,nodo,profundidad):
+
+        contador=0
+        node = deepcopy(nodo)
         # Aqui se mete el ultimo elemento de la cola, recordar que en dfs se añaden los hijos al comienzo
         colaPrincipal = []
         colaPrincipal.insert(0, node)
         explorado = set()
-        iteracion=0
-        nodosExplorados = []
-        condicion = True
 
-        ##CICLO DE EXPLORACIÓN PRINCIPAL
-        while condicion:
+
+
+
+        while contador < profundidad:
+
             if len(colaPrincipal)== 0:
                 print("no se pudo encontrar una solucion")
                 break
 
+
             ##primero debo validar que hijos puede tener debo crear una función
             nodoEvaluar = colaPrincipal.pop(0)
 
-            #nodoEvaluar.printestadoimport()
+            # nodoEvaluar.printestadoimport()
 
-            posicioneshijos = nodoEvaluar.moviValidos() #Aqui los hijos que estoy expandiendo
-
+            posicioneshijos = nodoEvaluar.moviValidos()  # Aqui los hijos que estoy expandiendo
 
             explorado.add(nodoEvaluar)
 
             for j in posicioneshijos:
                 '''A cada hijo debo avaluarlo y enviarlo al principio de la cola'''
 
-
-                hijoactual = deepcopy(nodoEvaluar) #Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
-
+                hijoactual = deepcopy(nodoEvaluar)  # Este es el que vamos a mover, a convertr en hijo por eso lo copiamos
 
                 hijoactual.mover(j)
 
-
-
                 if hijoactual not in explorado:
 
-                	#if hijoactual.validarCaminoRecorrido(j):
-                	#	break
-
-                    if hijoactual.validarWin():
-                        #   Que hacer si gana
-                        condicion=False
-                        hijoactual.printResult()
-                        #return hijoactual
-
-                    ##valueins = len(colaPrincipal) - 1
                     colaPrincipal.insert(0, hijoactual)
+            contador +=1
+
+
+        return explorado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

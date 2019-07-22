@@ -32,7 +32,9 @@ class ProfundidadI(object):
                 if resultato.validarWin():
                     resultato.printResult()#ganoooooooo
                     break
-            profundidad +=1
+                profundidad +=1
+
+            print(profundidad)
 
 
     def auxrecursiva(self,nodo,profundidad):
