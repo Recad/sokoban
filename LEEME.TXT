@@ -1,9 +1,6 @@
 los integrantes son:
 
 David andres ramirez 1430933
-Erik López Pacheco 1430406
-Juan Carlos Viteri 1427543
-
 
 Este programa requiere python 3 para ser ejecutado.
 
